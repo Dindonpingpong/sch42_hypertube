@@ -38,9 +38,10 @@ const Password = () => {
 }
 
 const Login = () => {
-    const handle = () => {
-        console.log('here');
-        window.open("http://localhost:5000/api/login/facebook", "_self");
+
+    const handle = (e) => {
+        console.log(e.target.name);
+        window.open(`http://localhost:5000/api/login/${e.target.name}`, "_self");
     }
 
     return (
@@ -50,18 +51,22 @@ const Login = () => {
                     <Col md={6} className="m-auto">
                         <Card>
                             <CardBody>
-                                <form >
-                                    <LoginInput />
-                                    <Password />
-                                    <Row>
-                                        <Col xs={3}>
-                                            <Button className="login-btn" color="info" onClick={handle()}>Sign in</Button>
-                                        </Col>
-                                        <Col xs={3}>
-                                            <Button className="login-btn" color="info">Via FB</Button>
-                                        </Col>
-                                    </Row>
-                                </form>
+                                <LoginInput />
+                                <Password />
+                                <Row>
+                                    <Col xs={3}>
+                                        <Button className="login-btn" color="info">Sign in</Button>
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Button className="login-btn" color="info" name="facebook" onClick={handle}>Via FB</Button>
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Button className="login-btn" color="info" name="github" onClick={handle}>Via Github</Button>
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Button className="login-btn" color="info" name="intra" onClick={handle}>Via school42</Button>
+                                    </Col>
+                                </Row>
                             </CardBody>
                         </Card>
                     </Col>

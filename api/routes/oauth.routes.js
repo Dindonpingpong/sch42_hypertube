@@ -25,12 +25,34 @@ router.get("/logout", (req, res) => {
   res.redirect(CLIENT_HOME_PAGE_URL);
 });
 
-router.get("/facebook", passport.authenticate("facebook"), function(req, res){
+router.get("/facebook", passport.authenticate("facebook"), function (req, res) {
   res.redirect(CLIENT_HOME_PAGE_URL);
 });
 
 router.get("/facebook/redirect",
   passport.authenticate("facebook", {
+    successRedirect: CLIENT_HOME_PAGE_URL,
+    failureRedirect: "/auth/login/failed"
+  })
+);
+
+router.get("/github", passport.authenticate("github"), function (req, res) {
+  res.redirect(CLIENT_HOME_PAGE_URL);
+});
+
+router.get("/github/redirect",
+  passport.authenticate("github", {
+    successRedirect: CLIENT_HOME_PAGE_URL,
+    failureRedirect: "/auth/login/failed"
+  })
+);
+
+router.get("/intra", passport.authenticate("42"), function (req, res) {
+  res.redirect(CLIENT_HOME_PAGE_URL);
+});
+
+router.get("/intra/redirect",
+  passport.authenticate("42", {
     successRedirect: CLIENT_HOME_PAGE_URL,
     failureRedirect: "/auth/login/failed"
   })
