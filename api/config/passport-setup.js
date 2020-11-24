@@ -19,8 +19,8 @@ passport.use(new FacebookStrategy({
   callbackURL: "/api/login/facebook/redirect"
 },
   async (token, tokenSecret, profile, done) => {
-    // console.log(profile);
-
+    console.log(profile);
+    
     done(null, profile);
   }
 ));
